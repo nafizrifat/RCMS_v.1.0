@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Cms/Message.js"></script>
+<style>
+    td.yes {
+        background-color: green;
+    }
+
+    td.no {
+        background-color: red;
+    }
+</style>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Forms</li>
+                <li>Smart Form Elements</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- You can also add more buttons to the
+            ribbon for further usability
+
+            Example below:
+
+            <span class="ribbon-button-alignment pull-right">
+                <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+                <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+                <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+                </span> -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+
+                <div class="row ">
+
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-12" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Home Content </h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <table id="worksTable" class="table">
+                                <thead>
+                                    <tr class="danger">
+                                        <th data-field="MessageId" data-visible="false"></th>
+                                        <th data-field="CreateDate" data-formatter="dateFormat" data-cell-style="cellStyle">Date</th>
+                                        
+                                        <th data-field="Name" data-cell-style="cellStyle" >Name</th>
+                                        <th data-field="Email" data-cell-style="cellStyle">Email</th>
+                                        <th data-field="Ip" data-cell-style="cellStyle">Ip</th>
+                                        <th data-field="Mac" data-cell-style="cellStyle">Mac</th>
+                                        <th data-formatter="TableMessageActions" data-events="actionEventsPort">Action</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+
+                </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    @*style="display: none"*@
+
+
+    @*<div style="display: none" class="jarviswidget col-sm-12 col-md-12 col-lg-12" id="divMessagePopup" data-widget-editbutton="false" data-widget-custombutton="false">*@
+    <div style="display: none" id="divMessagePopup" title="APT ERP V 1.0.0">
+
+
+        
+
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            @*<div class="widget-body no-padding">*@
+
+                <div id="order-form" class="smart-form" novalidate="novalidate">
+
+                    <input id="hdnMessageId" type="hidden" value="0">
+
+                    <fieldset>
+
+                        <div class="row">
+                            <section class="col col-6">
+                                <label for="txtName" class="label">Name</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtName" name="txtName" placeholder="Name" readonly>
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label for="txtEmail" class="label">Email</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtEmail" name="txtEmail" placeholder="Emails" readonly>
+                                </label>
+                            </section>
+
+                        </div>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label for="txtSubject" class="label">Subject</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtSubject" name="txtSubject" placeholder="Name" readonly>
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label for="txtCreateDate" class="label">CreateDate</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtCreateDate" name="txtCreateDate" placeholder="Emails" readonly>
+                                </label>
+                            </section>
+
+                        </div>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label for="txtIp" class="label">Ip</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtIp" name="txtIp" placeholder="IP" readonly>
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label for="txtMac" class="label">Mac</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtMac" name="txtMac" placeholder="MAC" readonly>
+                                </label>
+                            </section>
+
+                        </div>
+                    </fieldset>
+                    @*<div class="row">
+
+                            <section class="col col-12">
+                                <label for="txtMessageDetails" class="label">Description</label>
+                                <label class="textarea">
+                                    <textarea rows="6" id="txtMessageDetails" placeholder="Description"></textarea>
+                                </label>
+                            </section>
+                        </div>*@
+                    <fieldset>
+
+                        <label for="txtMessageDetails" class="label">Description</label>
+                        <label class="textarea">
+                            <textarea rows="6" id="txtMessageDetails" placeholder="Description" readonly></textarea>
+                        </label>
+
+                    </fieldset>
+                    @*<section>
+                            <section class="col col-12">
+                                <label for="txtMessageDetails" class="label">Description</label>
+                                <label class="textarea">
+                                    <textarea rows="6" id="txtMessageDetails" placeholder="Description"></textarea>
+                                </label>
+                            </section>
+                        </section>*@
+
+                    <footer>
+
+                        <button type="button" class="btn btn-danger" id="btnDeleteMessagePopup">Delete</button>
+                        <button data-dismiss="modal" class="btn btn-primary">
+                            Close
+                        </button>
+                    </footer>
+
+
+
+                </div>
+            @*</div>*@
+            <!-- end widget content -->
+        </div>
+        <!-- end widget div -->
+   
+
+
+    @*</div>*@
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+<div id="myModalDeleteMessage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeleteMessage">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</html>
+
+

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+
+<script src="~/Scripts/Home/LangingPageMaster.js"></script>
+
+<section id="home" class="home-2 parallax section one-page-section">
+    @Html.Partial("~/Views/LandingPage/_HomeSocial.cshtml")
+</section>
+<!-- END HOME -->
+<!-- ABOUT -->
+<section id="about" class="section one-page-section">
+
+    @Html.Partial("~/Views/LandingPage/_About.cshtml")
+</section>
+<!-- END ABOUT -->
+<!-- HOBBIES & INTERESTS -->
+<div class="hobbies-section">
+    @Html.Partial("~/Views/LandingPage/_Hobbies.cshtml")
+  
+</div>
+<!-- END HOBBIES & INTERESTS -->
+<!-- SERVICES -->
+<section id="services" class="section one-page-section">
+    @Html.Partial("~/Views/LandingPage/_MyServices.cshtml")
+</section>
+
+<section id="work" class="section one-page-section">
+    @Html.Partial("~/Views/LandingPage/_Portfolio.cshtml")
+    <div class="col-xs-2 col-md-offset-5">
+        <div class="main-color text-center">
+            <a href="/Portfolio/PortfolioList" class="pf-nav-btn hor-center effect">
+                <i class="fa fa-th-large"></i>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- End WORK -->
+<!-- TESTIMONIALS -->
+<div class="section parallax-section testimonials-section">
+    @Html.Partial("~/Views/LandingPage/_Experience.cshtml")
+</div>
+<!-- END TESTIMONIALS -->
+<!-- NEWS -->
+<section id="news" class="section one-page-section">
+    @Html.Partial("~/Views/LandingPage/_blogs.cshtml")
+    <div class="col-xs-2 col-md-offset-5">
+        <div class="main-color text-center">
+            <a href="/blogs/Index" class="pf-nav-btn hor-center effect">
+                <i class="fa fa-th-large"></i>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- END NEWS -->
+<!-- CONTACT -->
+<section id="contact" class="section parallax-section one-page-section">
+   @Html.Partial("~/Views/LandingPage/_ContactMe.cshtml")
+</section>
+<!-- END CONTACT -->

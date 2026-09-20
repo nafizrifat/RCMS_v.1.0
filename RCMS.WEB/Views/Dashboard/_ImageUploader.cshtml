@@ -1,0 +1,199 @@
+﻿
+<script src="~/Scripts/Dashboard/ImageUploader.js"></script>
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="">
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+
+                <div class="row ">
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Add new Image</h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <div id="order-form" class="smart-form" novalidate="novalidate">
+                                    <header>
+                                       Images
+                                    </header>
+
+                                    <input id="hdnTypeId" type="hidden" value="0">
+                                    <fieldset>
+
+                                        <section>
+                                            <label for="txtImageName" class="label">Image Name</label>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-building"></i>
+                                                <input type="text" id="txtImageName" name="txtImageName" placeholder="File Name">
+                                            </label>
+                                        </section>
+                                        <div class="row">
+                                            <section class="col col-6">
+
+                                                <div class="input input-file">
+                                                    <span class="button"><input id="imgInpImageUploader" type="file" name="file2" onchange=" this.parentNode.nextSibling.value = this.value ">Browse</span><input type="text" placeholder="Include some files" readonly="">
+                                                </div>
+                                                <input type="hidden" id="hdnImageLink">
+                                                <img id="blahImageUploader" src="#" alt="image" class="img-responsive" style="width: 300px; height: 200px" />
+                                            </section>
+                                            
+                                        </div>
+                                      
+
+                                    </fieldset>
+
+                                    <footer>
+                                        <button id="btnSaveUploadImage" class="btn btn-primary">
+                                            Upload Image
+                                        </button>
+                                    </footer>
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                    </div>
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-8" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Home Content </h2>
+
+                        </header>
+
+                        <div>
+
+                            <table id="imagesTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th data-field="UplodImageId" data-visible="false"></th>
+                                        <th data-field="ImageLink" data-formatter="ShowImage">Image</th>
+                                        <th data-field="ImageName">Image Name</th>
+                                        <th data-field="ImageLink" >Link</th>
+                                        <th data-formatter="TableImagesActions">Action</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+
+                </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="myModalDeleteImage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeleteImage">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</html>

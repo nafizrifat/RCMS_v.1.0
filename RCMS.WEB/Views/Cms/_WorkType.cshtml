@@ -1,0 +1,207 @@
+﻿<script src="~/Scripts/Cms/WorkTypePartial.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Forms</li>
+                <li>Smart Form Elements</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- You can also add more buttons to the
+            ribbon for further usability
+
+            Example below:
+
+            <span class="ribbon-button-alignment pull-right">
+            <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+            <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+            <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+            </span> -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+
+                <div class="row ">
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Add new work type</h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <div id="order-form" class="smart-form" novalidate="novalidate">
+                                    <header>
+                                        Work Types
+                                    </header>
+
+                                    <input id="hdnTypeId" type="hidden" value="0">
+                                    <fieldset>
+
+                                        <section>
+                                            <label for="txtTypeName" class="label">Type Name</label>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-building"></i>
+                                                <input type="text" id="txtTypeName" name="txtTypeName" placeholder="Icon">
+                                            </label>
+                                            </section>
+                                        <section>
+                                            <label class="toggle">
+                                                <input type="checkbox" id="chkIsVisible" name="chkIsVisible" checked="checked">
+                                                <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Is Visible
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <section>
+                                                <label for="txtTypeDescription" class="label">Description</label>
+                                                <label class="textarea">
+                                                    <textarea rows="5" name="txtTypeDescription" id="txtTypeDescription" placeholder="Description"></textarea>
+                                                </label>
+                                            </section>
+                                        </section>
+
+                                    </fieldset>
+
+                                    <footer>
+                                        <button id="btnSaveWorkType" class="btn btn-primary">
+                                            Save Work Type
+                                        </button>
+                                    </footer>
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                     </div>
+                        <div class="jarviswidget col-sm-12 col-md-12 col-lg-8" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2>Home Content </h2>
+
+                            </header>
+                         
+                            <div>
+
+                                <table id="workTypeTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="PortfolioTypeId" data-visible="false"></th>
+                                            <th data-field="Type">Type</th>
+                                            <th data-field="IsVisible" data-formatter="IsVisible">Visibility</th>
+                                            <th data-field="Description">Details</th>
+                                            <th data-formatter="TableActions" data-events="actionEvents">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+
+                    </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+    $(document).ready(function () {
+
+    pageSetUp();
+
+    })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+<div id="myModalDelete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeleteWorkType">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</html>

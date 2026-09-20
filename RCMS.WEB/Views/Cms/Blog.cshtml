@@ -1,0 +1,279 @@
+﻿
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Cms/Blog.js"></script>
+@*<script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>*@
+@*<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>*@
+<script src="~/Theme/js/plugin/ckeditor/4.22.1/standard/ckeditor.js"></script>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Forms</li>
+                <li>Smart Form Elements</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- You can also add more buttons to the
+            ribbon for further usability
+
+            Example below:
+
+            <span class="ribbon-button-alignment pull-right">
+                <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+                <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+                <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+                </span> -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+
+                <div class="row ">
+
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-12" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Home Content </h2>
+
+                        </header>
+                        <div>
+
+                            <button id="btnAddNewBlog" class="btn btn-primary pull-right">
+                                Add New Blog
+                            </button>
+                        </div>
+                        <!-- widget div-->
+                        <div>
+
+                            <table id="worksTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th data-field="BlogId" data-visible="false"></th>
+                                        <th data-field="ImageLink" data-formatter="ShowImage">Image</th>
+                                        <th data-field="Title">Title</th>
+                                        <th data-field="Description">Details</th>
+                                        <th data-formatter="TableBlogActions" data-events="actionEventsPort">Action</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+
+                </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    @*style="display: none"*@
+
+    
+    <div style="display: none" class="jarviswidget col-sm-12 col-md-12 col-lg-12" id="divAddNewBlog" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+            <h2>Add new Blog</h2>
+
+        </header>
+
+        <!-- widget div-->
+        <div>
+
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
+
+            </div>
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+
+                <div id="order-form" class="smart-form" novalidate="novalidate">
+                  
+                    <input id="hdnBlogId" type="hidden" value="0">
+
+                    <fieldset>
+                      
+                        <div class="row">
+                            <section class="col col-6">
+                                <label for="txtTitle" class="label">Title</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtTitle" name="txtTitle" placeholder="Title">
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <label for="txtSequence" class="label">Sequence</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="number" id="txtSequence" min="0" max="50" name="txtSequence" placeholder="Sequence">
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <section>
+                                    <label class="toggle">
+                                        <input type="checkbox" id="chkIsPublished" name="chkIsPublished" checked="checked">
+                                        <i data-swchon-text="YES" data-swchoff-text="NO"></i>Is Published
+                                    </label>
+
+                                </section>
+                            </section>
+                        </div>
+                       
+                        <div class="row">
+                            <section class="col col-6">
+
+                                <div class="input input-file">
+                                    <span class="button"><input id="imgInp" type="file" name="file2" onchange=" this.parentNode.nextSibling.value = this.value ">Browse</span><input type="text" placeholder="Include some files" readonly="">
+                                </div>
+                                <input type="hidden" id="hdnImageLink">
+                                <img id="blah" src="#" alt="image" class="img-responsive" style="width: 300px; height: 200px" />
+                            </section>
+                            <section class="col col-6">
+                                <label for="txtDescription" class="label">Description</label>
+                                <label class="textarea">
+                                    <textarea rows="5" id="txtDescription" placeholder="Description"></textarea>
+                                </label>
+                            </section>
+                        </div>
+                    </fieldset>
+                    <section>
+                        <section>
+                            <label for="txtDescription" class="label">Details</label>
+                            <label class="textarea">
+                                <textarea name="ckeditor" id="txtDetails"></textarea>
+                            </label>
+                        </section>
+                    </section>
+
+                    <footer>
+                        <button id="btnSaveBlog" class="btn btn-primary">
+                            Save Blog
+                        </button>
+                    </footer>
+                </div>
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+
+
+    @*</div>*@
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+<div id="myModalDeleteBlog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeleteBlog">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</html>
+
+

@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+<style>
+    #sidebar {
+        /*width: 190px;*/
+        /*position: fixed;*/
+        /*margin-left: 410px;*/
+    }
+     
+</style>
+
+<script src="~/Scripts/SinglePage/PortfolioDetails.js"></script>
+<!DOCTYPE html>
+
+<html lang="en">
+<body>
+
+    <!-- Loader -->
+    <div class="loader-con">
+        <div class="ball ball-1"><span class="main-color-bg"></span></div>
+        <div class="ball ball-2"><span class="main-color-bg"></span></div>
+        <div class="ball ball-3"><span class="main-color-bg"></span></div>
+    </div>
+    <!-- End Loader  -->
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="nav-wrapper effect">
+        <nav class="navbar-custom">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand effect" href="/">
+                        <img src="~/LandingTheme/img/brand-img.png" alt="brand-img">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-navbar">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="main-color"><a href="/#home" class="scroll effect active" data-speed="800">HOME</a></li>
+                        <li class="main-color"><a href="/#about" class="scroll effect" data-speed="1000">ABOUT</a></li>
+                        <li class="main-color"><a href="/#services" class="scroll effect" data-speed="1400">SERVICES</a></li>
+                        <li class="main-color"><a href="/#work" class="scroll effect" data-speed="1400">WORK</a></li>
+                        <li class="main-color"><a href="/#news" class="scroll effect" data-speed="1500">NEWS</a></li>
+                        <li class="main-color"><a href="/#contact" class="scroll effect" data-speed="1600">CONTACT</a></li>
+                    </ul>
+
+                </div><!-- End navbar-collapse -->
+            </div><!-- End container -->
+        </nav>
+    </header>
+    <!-- END MAIN NAVIGATION BAR -->
+    <!-- HEADER -->
+    <section id="secPagesHeader" class="pages-header">
+        <div class="container">
+            <div class="pages-header-content">
+                <h1 id="titleId"> </h1>
+
+                <ul class="pages-header-list">
+                    <li class="main-color"><a href="/" class="effect">HOME</a></li>
+                    <li><a href="#" id="titleDetailsId" class="effect"></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- END HEADER -->
+    <!-- Portfolio Details -->
+    <section class="pf-details-con ">
+        <div class="container">
+
+            <div class="owl-carousel pf-details-slider mb-30">
+                <div class="single-pf-img">
+                    <img src="http://placehold.it/1170x550" alt="work-d-2">
+                </div>
+                <div class="single-pf-img">
+                    <img src="http://placehold.it/1170x550" alt="work-d-2">
+                </div>
+                <div class="single-pf-img">
+                    <img src="http://placehold.it/1170x550" alt="work-d-2">
+                </div>
+            </div>
+
+            @*<!-- Images Columns -->
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 mb-30">
+                    <a href="http://placehold.it/770x550" class="pf-gallery-popuap">
+                        <img src="http://placehold.it/770x550" alt="column-img-1">
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-xs-12 mb-30">
+                    <a href="http://placehold.it/770x550" class="pf-gallery-popuap">
+                        <img src="http://placehold.it/770x550" alt="column-img-1">
+                    </a>
+                </div>
+            </div><!-- End row -->
+            <!-- End Images Columns -->*@
+
+            <div class="row pf-details-desc">
+
+                <div id="sidebar" class="col-sm-4 animate-on-scroll" data-animation="slide-down">
+                    <h3>PROJECT INFO</h3>
+                    <div class="project-info">
+                        <ul>
+                            <li>
+                                <i class="fa fa-user main-color"></i> <span class="project-label">Role : </span>
+                                <span id="spnRole" class="project-value"></span>
+                            </li>
+                            <li>
+                                <i class="fa fa-user main-color"></i> <span class="project-label">Type : </span>
+                                <span id="spnType" class="project-value"></span>
+                            </li>
+                            <li>
+                                <i class="fa fa-coffee main-color"></i> <span class="project-label">Technologies : </span>
+                                <span id="spnTechnologies" class="project-value"></span>
+                            </li>
+                            <li>
+                                <i class="fa fa-link main-color"></i> <span class="project-label">Preview URL : </span>
+                                <span id="spnlink" class="project-value main-color"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-8">
+                    <h3 id="projectDetailsTitle"></h3>
+                    <h4 id="projectDetails"></h4>
+                    <p id="mainParagraph"></p>
+                    <div class="share-links">
+                        <span class="share-label"><i class="fa fa-share-alt main-color"></i> Share On:</span>
+                        <ul class="intro-social">
+                            <li class="main-color-bg"><a class="text-center effect" id="shareFacebook"><i class="fa fa-facebook"></i></a></li>
+                            <li class="main-color-bg"><a class="text-center effect" id="shareTwitter"><i class="fa fa-twitter"></i></a></li>
+                            @*<li class="main-color-bg"><a class="text-center effect" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li class="main-color-bg"><a class="text-center effect" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                        <li class="main-color-bg"><a class="text-center effect" href="#"><i class="fa fa-instagram"></i></a></li>*@
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End container -->
+    </section>
+    <!-- End Portfolio Details -->
+    <!-- Portfolio Details Pagination -->
+    <div class="pf-pagination">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="pf-prev-link main-color">
+                        <a id="clickPreviousProject" class="effect">
+                            <i class="fa fa-long-arrow-left"></i><span class="link-text">Previous Project</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="main-color text-center">
+                        <a href="/Portfolio/PortfolioList" class="pf-nav-btn hor-center effect">
+                            <i class="fa fa-th-large"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="pf-next-link main-color">
+                        <a id="clickNextProject" class="effect">
+                            <span  class="link-text">Next Project</span><i class="fa fa-long-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- end row -->
+        </div><!-- End container -->
+    </div>
+    <!--End Portfolio Details Pagination -->
+    <!-- FOOTER -->
+   
+</body>
+</html>

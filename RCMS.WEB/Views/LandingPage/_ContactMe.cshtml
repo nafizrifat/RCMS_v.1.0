@@ -1,0 +1,43 @@
+﻿<script src="~/Scripts/LandingPage/ContactMe.js"></script>
+<div class="container">
+
+    <div class="section-title">
+        <h2>Contact Me</h2>
+        <img src="~/LandingTheme/img/title-splash.png" alt="title-splash">
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-10 col-md-offset-1 animate-on-scroll" data-animation="slide-down">
+            @*<form id="contact-form" method="post" action="mail/contact.php">*@
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" name="name" id="name" class="input-field" required="required" placeholder="Name">
+                        <span class="name-error text-center mb-30"></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="email" name="email" id="email" class="input-field" required="required" placeholder="Email">
+                        <span class="email-error text-center mb-30"></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" name="subject" id="subject" class="input-field" required="required" placeholder="Subject">
+                        <span class="subject-error text-center mb-30"></span>
+                    </div>
+                    <div class="col-xs-12">
+                        <textarea name="message" id="message" class="input-field" required="required" placeholder="Message"></textarea>
+                        <span class="message-error text-center mb-30"></span>
+                    </div>
+                </div>
+
+                <div id="form-message" class="error mb-30 text-center"></div>
+
+            <button id="btnSendMessge"  class="fl-btn main-color-bg effect submit-btn">
+                <i class="fa fa-send"></i> Send Message
+            </button>
+
+            @*</form>*@
+        </div>
+
+    </div><!-- end row -->
+</div> <!-- End Container -->

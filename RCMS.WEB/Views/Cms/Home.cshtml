@@ -1,0 +1,353 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Cms/Home.js"></script>
+@*<h2>AssetCategory</h2>*@
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="myModalDelete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeleteSocial">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <!-- MAIN PANEL -->
+    @*id="main"*@
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Forms</li>
+                <li>Smart Form Elements</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- You can also add more buttons to the
+            ribbon for further usability
+
+            Example below:
+
+            <span class="ribbon-button-alignment pull-right">
+            <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+            <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+            <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+            </span> -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+              
+                <div class="row ">
+
+                <div class="jarviswidget col-sm-12 col-md-12 col-lg-6" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>Home Content </h2>
+
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+
+                            <div id="divTitle" class="smart-form" novalidate="novalidate">
+                                <header>
+                                    Home Content
+                                </header>
+                                
+                                <fieldset>
+                                    <input type="hidden" id="hdnHomeId">
+                                    <section >
+                                        <label for="txtTitle" class="label">Title</label>
+                                        <label class="input">
+                                            <i class="icon-append fa fa-building"></i>
+                                            <input  required="" type="text" id="txtTitle" name="txtTitle" placeholder="Title">
+                                        </label>
+                                    </section>
+                                    <section >
+                                        <label for="txtSubTitle" class="label">Sub Title</label>
+                                        <label class="input">
+                                            <i class="icon-append fa fa-square"></i>
+                                            <input required="" type="text" id="txtSubTitle" name="txtSubTitle" placeholder="Sub Title">
+                                        </label>
+                                    </section>
+
+                                </fieldset>
+                                <fieldset>
+                                    <section>
+
+                                        <div class="input input-file">
+                                            <span class="button"><input id="imgInp" type="file" name="file2" onchange=" this.parentNode.nextSibling.value = this.value ">Browse</span><input type="text" placeholder="Include some files" readonly="">
+                                        </div>
+                                        <input type="hidden" id="hdnHomeImageLink">
+                                        @*style="max-height: 800px; max-width: 1200px;"*@
+                                        @*<img id="blah" src="#" alt="image" class="img-thumbnail img-responsive" height="800" width="1200"  />*@
+                                        <img id="blah" src="#" alt="image" class="img-responsive" style="width: 600px; height: 400px" />
+                                       @* <div id="dialog"></div>*@
+                                     </section>
+                                </fieldset>
+                                <footer>
+                                    <span>Recommended: 1200x800</span>
+                                    <button id="btnSubmit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </footer>
+</div>
+
+                        </div>
+                        <!-- end widget content -->
+
+                    </div>
+                    <!-- end widget div -->
+
+                </div>
+                    @*<div class="col-sm-12 col-md-12 col-lg-5"></div> style="padding-left: 2%"*@
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-6 " style="padding-left: 2%"  id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                      
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Social Networking Information </h2>
+                            
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <div id="order-form" class="smart-form" novalidate="novalidate">
+                                    <header>
+
+                                        Social Networking Information
+                                        <button id="btnAddNewSocial" class="btn btn-primary pull-right">
+                                            Add New Social
+                                        </button>
+                                    </header>
+                                    
+                                    <fieldset>
+                                        
+                                        <table id="socialTable"  class="table table-striped">
+                                            <tr>
+                                                <th>Social</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+
+                                    
+                                    @*<footer>
+                                        <button type="submit" class="btn btn-primary">
+                                            Validate Form
+                                        </button>
+                                    </footer>*@
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+
+                </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+   
+    </div>
+    <!-- END MAIN PANEL -->
+
+
+    <div id="popup" style="display: none" title="APT ERP V 1.0.0">
+        <div class="jarviswidget col-sm-12 col-md-12 col-lg-12" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+           <header>
+                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                <h2>Add new Social</h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                    <div id="order-form" class="smart-form" novalidate="novalidate">
+                        <header>
+                            Social Links
+                        </header>
+
+                        <fieldset>
+
+                            <section>
+                                <label for="txtIcon" class="label">Icon</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtIcon" name="txtIcon" placeholder="Icon">
+                                </label>
+
+                                <a target="blank" href="../Cms/Icons"> Icon List</a>
+                            </section>
+                            <section>
+                                <label for="txtProfileUrl" class="label">Profile URL</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-square"></i>
+                                    <input type="text" id="txtProfileUrl" name="txtProfileUrl" placeholder="Profile Url">
+                                </label>
+                            </section>
+
+                        </fieldset>
+
+                        <footer>
+                            <button id="btnSaveSocalLink" class="btn btn-primary">
+                                Save Socal Link
+                            </button>
+                        </footer>
+                    </div>
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+        @*<div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>*@
+    </div>
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+
+</html>
+

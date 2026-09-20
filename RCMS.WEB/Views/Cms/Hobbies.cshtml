@@ -1,0 +1,254 @@
+﻿@{
+    ViewBag.Title = "Hobbies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<script src="~/Scripts/Cms/Hobbies.js"></script>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="myModalDelete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeleteHobby">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Forms</li>
+                <li>Smart Form Elements</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- You can also add more buttons to the
+            ribbon for further usability
+
+            Example below:
+
+            <span class="ribbon-button-alignment pull-right">
+            <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+            <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+            <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+            </span> -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+
+                <div class="row ">
+
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-12"  data-widget-editbutton="false" data-widget-custombutton="false">
+                       
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Home Content </h2>
+
+                        </header>
+                        <div>
+
+                            <button id="btnAddNewHobby" class="btn btn-primary pull-right">
+                                Add New Hobby
+                            </button>
+                        </div>
+                        <!-- widget div-->
+                        <div>
+
+                            <table id="hobbiesTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th data-field="HobbyId" data-visible="false"></th>
+                                        <th data-field="Icon" data-formatter="ShowIcon">Icon</th>
+                                        <th data-field="Title">Title</th>
+                                        <th data-field="Description">Details</th>
+                                        <th data-formatter="TableActions" data-events="actionEvents">Action</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                  
+                </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+
+    <div id="popup" style="display: none" title="APT ERP V 1.0.0">
+        <div class="jarviswidget col-sm-12 col-md-12 col-lg-12" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+            <header>
+                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                <h2>Add new Social</h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                    <div id="order-form" class="smart-form" novalidate="novalidate">
+                        <header>
+                            Social Links
+                        </header>
+
+                        <input id="hdnHobbyId" type="hidden" value="0">
+                        <fieldset>
+
+                            <section>
+                                <label for="txtIcon" class="label">Icon</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtIcon" name="txtIcon" placeholder="Icon">
+                                </label>
+                                <a target="blank" href="../Cms/Icons"> Icon List</a>
+                            </section>
+                            <section>
+                                <label for="txtTitle" class="label">Title</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-building"></i>
+                                    <input type="text" id="txtTitle" name="txtTitle" placeholder="Icon">
+                                </label>
+                            </section>
+                            <section>
+                                <section>
+                                    <label for="txtDescription" class="label">Description</label>
+                                    <label class="textarea">
+                                        <textarea rows="5" name="txtDescription" id="txtDescription" placeholder="Description"></textarea>
+                                    </label>
+                                </section>
+                            </section>
+
+                        </fieldset>
+
+                        <footer>
+                            <button id="btnSaveHobby" class="btn btn-primary">
+                                Save Hobby
+                            </button>
+                        </footer>
+                    </div>
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutTitle" Type="varchar" MaxLength="250" />
+          <Property Name="AboutDetails" Type="varchar" MaxLength="2500" />
+          <Property Name="AboutImageLink" Type="varchar" MaxLength="250" />
+          <Property Name="CvLink" Type="varchar" MaxLength="250" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AboutPersonalInfo">
+          <Key>
+            <PropertyRef Name="AboutPersonalInfoId" />
+          </Key>
+          <Property Name="AboutPersonalInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutId" Type="int" />
+          <Property Name="PersonalName" Type="varchar" MaxLength="250" />
+          <Property Name="PersonalDetails" Type="varchar" MaxLength="250" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AboutSkill">
+          <Key>
+            <PropertyRef Name="AboutSkillId" />
+          </Key>
+          <Property Name="AboutSkillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutId" Type="int" />
+          <Property Name="SkillName" Type="varchar" MaxLength="250" />
+          <Property Name="SkillPercent" Type="varchar" MaxLength="250" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditId" />
+          </Key>
+          <Property Name="AuditId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditTime" Type="datetime" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="250" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="PcName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Browser" Type="nvarchar" MaxLength="250" />
+          <Property Name="OsInfo" Type="nvarchar" MaxLength="250" />
+          <Property Name="RequestedUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="Url" Type="nvarchar" MaxLength="250" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogId" />
+          </Key>
+          <Property Name="BlogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+          <Property Name="ImageLink" Type="varchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Details" Type="varchar(max)" />
+          <Property Name="HitCount" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Hobbies">
+          <Key>
+            <PropertyRef Name="HobbyId" />
+          </Key>
+          <Property Name="HobbyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Icon" Type="varchar" MaxLength="250" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="varchar" MaxLength="550" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Home">
+          <Key>
+            <PropertyRef Name="HomeId" />
+          </Key>
+          <Property Name="HomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="SubTitle" Type="varchar" MaxLength="250" />
+          <Property Name="HomeImageLink" Type="varchar" MaxLength="250" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Subject" Type="varchar" MaxLength="250" />
+          <Property Name="MessageDetails" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Ip" Type="varchar" MaxLength="250" />
+          <Property Name="PcName" Type="varchar" MaxLength="250" />
+          <Property Name="Browser" Type="varchar" MaxLength="250" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PortfolioType">
+          <Key>
+            <PropertyRef Name="PortfolioTypeId" />
+          </Key>
+          <Property Name="PortfolioTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="250" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Socials">
+          <Key>
+            <PropertyRef Name="SocialId" />
+          </Key>
+          <Property Name="SocialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocialIcon" Type="varchar" MaxLength="150" />
+          <Property Name="SocialUrl" Type="varchar" MaxLength="250" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+        </EntityType>
+        <EntityType Name="SystemSettings">
+          <Key>
+            <PropertyRef Name="SystemSettings" />
+          </Key>
+          <Property Name="SystemSettings" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerDayMaxMessageSent" Type="int" />
+          <Property Name="EmailContent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UplodImage">
+          <Key>
+            <PropertyRef Name="UplodImageId" />
+          </Key>
+          <Property Name="UplodImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="LoginId" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="FailedLoginNo" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsExpired" Type="bit" />
+          <Property Name="AccessParentCompany" Type="int" />
+        </EntityType>
+        <EntityType Name="Works">
+          <Key>
+            <PropertyRef Name="WorkId" />
+          </Key>
+          <Property Name="WorkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+          <Property Name="Link" Type="varchar" MaxLength="250" />
+          <Property Name="ImageLink" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="varchar" MaxLength="550" />
+          <Property Name="Details" Type="varchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Role" Type="varchar" MaxLength="550" />
+          <Property Name="Technologies" Type="varchar" MaxLength="550" />
+          <Property Name="LastUpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AboutPersonalInfo" EntityType="Self.AboutPersonalInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AboutSkill" EntityType="Self.AboutSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hobbies" EntityType="Self.Hobbies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Home" EntityType="Self.Home" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortfolioType" EntityType="Self.PortfolioType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Socials" EntityType="Self.Socials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemSettings" EntityType="Self.SystemSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UplodImage" EntityType="Self.UplodImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Works" EntityType="Self.Works" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EntitiesCms" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Socials" EntityType="Model.Social" />
+          <EntitySet Name="Homes" EntityType="Model.Home" />
+          <EntitySet Name="Abouts" EntityType="Model.About" />
+          <EntitySet Name="AboutSkills" EntityType="Model.AboutSkill" />
+          <EntitySet Name="AboutPersonalInfoes" EntityType="Model.AboutPersonalInfo" />
+          <EntitySet Name="Hobbies" EntityType="Model.Hobby" />
+          <EntitySet Name="PortfolioTypes" EntityType="Model.PortfolioType" />
+          <EntitySet Name="Works" EntityType="Model.Work" />
+          <EntitySet Name="Blogs" EntityType="Model.Blog" />
+          <EntitySet Name="SystemSettings" EntityType="Model.SystemSetting" />
+          <EntitySet Name="Messages" EntityType="Model.Message" />
+          <EntitySet Name="Audits" EntityType="Model.Audit" />
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <EntitySet Name="UplodImages" EntityType="Model.UplodImage" />
+        </EntityContainer>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="SocialId" />
+          </Key>
+          <Property Name="SocialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocialIcon" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SocialUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Home">
+          <Key>
+            <PropertyRef Name="HomeId" />
+          </Key>
+          <Property Name="HomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SubTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="HomeImageLink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AboutDetails" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="AboutImageLink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CvLink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AboutSkill">
+          <Key>
+            <PropertyRef Name="AboutSkillId" />
+          </Key>
+          <Property Name="AboutSkillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutId" Type="Int32" />
+          <Property Name="SkillName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SkillPercent" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AboutPersonalInfo">
+          <Key>
+            <PropertyRef Name="AboutPersonalInfoId" />
+          </Key>
+          <Property Name="AboutPersonalInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutId" Type="Int32" />
+          <Property Name="PersonalName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PersonalDetails" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="HobbyId" />
+          </Key>
+          <Property Name="HobbyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PortfolioType">
+          <Key>
+            <PropertyRef Name="PortfolioTypeId" />
+          </Key>
+          <Property Name="PortfolioTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="WorkId" />
+          </Key>
+          <Property Name="WorkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Role" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="Technologies" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogId" />
+          </Key>
+          <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HitCount" Type="Int32" />
+          <Property Name="LastUpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SystemSetting">
+          <Key>
+            <PropertyRef Name="SystemSettings" />
+          </Key>
+          <Property Name="SystemSettings" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerDayMaxMessageSent" Type="Int32" />
+          <Property Name="EmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MessageDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Ip" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PcName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditId" />
+          </Key>
+          <Property Name="AuditId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditTime" Type="DateTime" Precision="3" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="HostName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PcName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Browser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OsInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RequestedUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="FailedLoginNo" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsExpired" Type="Boolean" />
+          <Property Name="AccessParentCompany" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UplodImage">
+          <Key>
+            <PropertyRef Name="UplodImageId" />
+          </Key>
+          <Property Name="UplodImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesCms" >
+          <EntitySetMapping Name="Socials">
+            <EntityTypeMapping TypeName="Model.Social">
+              <MappingFragment StoreEntitySet="Socials">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="SocialUrl" ColumnName="SocialUrl" />
+                <ScalarProperty Name="SocialIcon" ColumnName="SocialIcon" />
+                <ScalarProperty Name="SocialId" ColumnName="SocialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Homes">
+            <EntityTypeMapping TypeName="Model.Home">
+              <MappingFragment StoreEntitySet="Home">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="HomeImageLink" ColumnName="HomeImageLink" />
+                <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HomeId" ColumnName="HomeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="Model.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CvLink" ColumnName="CvLink" />
+                <ScalarProperty Name="AboutImageLink" ColumnName="AboutImageLink" />
+                <ScalarProperty Name="AboutDetails" ColumnName="AboutDetails" />
+                <ScalarProperty Name="AboutTitle" ColumnName="AboutTitle" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AboutSkills">
+            <EntityTypeMapping TypeName="Model.AboutSkill">
+              <MappingFragment StoreEntitySet="AboutSkill">
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="SkillPercent" ColumnName="SkillPercent" />
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+                <ScalarProperty Name="AboutSkillId" ColumnName="AboutSkillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AboutPersonalInfoes">
+            <EntityTypeMapping TypeName="Model.AboutPersonalInfo">
+              <MappingFragment StoreEntitySet="AboutPersonalInfo">
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="PersonalDetails" ColumnName="PersonalDetails" />
+                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+                <ScalarProperty Name="AboutPersonalInfoId" ColumnName="AboutPersonalInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hobbies">
+            <EntityTypeMapping TypeName="Model.Hobby">
+              <MappingFragment StoreEntitySet="Hobbies">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="HobbyId" ColumnName="HobbyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortfolioTypes">
+            <EntityTypeMapping TypeName="Model.PortfolioType">
+              <MappingFragment StoreEntitySet="PortfolioType">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PortfolioTypeId" ColumnName="PortfolioTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="Model.Work">
+              <MappingFragment StoreEntitySet="Works">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="Technologies" ColumnName="Technologies" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="Model.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="LastUpdateOn" ColumnName="LastUpdateOn" />
+                <ScalarProperty Name="HitCount" ColumnName="HitCount" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemSettings">
+            <EntityTypeMapping TypeName="Model.SystemSetting">
+              <MappingFragment StoreEntitySet="SystemSettings">
+                <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+                <ScalarProperty Name="PerDayMaxMessageSent" ColumnName="PerDayMaxMessageSent" />
+                <ScalarProperty Name="SystemSettings" ColumnName="SystemSettings" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="Model.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="PcName" ColumnName="PcName" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="MessageDetails" ColumnName="MessageDetails" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="Model.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="RequestedUrl" ColumnName="RequestedUrl" />
+                <ScalarProperty Name="OsInfo" ColumnName="OsInfo" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="PcName" ColumnName="PcName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="AuditTime" ColumnName="AuditTime" />
+                <ScalarProperty Name="AuditId" ColumnName="AuditId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="AccessParentCompany" ColumnName="AccessParentCompany" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FailedLoginNo" ColumnName="FailedLoginNo" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UplodImages">
+            <EntityTypeMapping TypeName="Model.UplodImage">
+              <MappingFragment StoreEntitySet="UplodImage">
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="UplodImageId" ColumnName="UplodImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

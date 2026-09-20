@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "";
+}
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Theme/LoginTheme/js/index.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>*@
+<script src="~/Theme/LoginTheme/js/jquery.cookie.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+<style>
+    #loading {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        display: block;
+        opacity: 0.7;
+        background-color: #fff;
+        z-index: 99;
+        text-align: center;
+    }
+
+    #loading-image {
+        /*position: absolute;
+        align-items: center;
+        justify-content: center;*/
+        position: fixed;
+        /*bottom: 0;
+        left: 0;
+        width: 100%;*/
+        text-align: center;
+    }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="icon" href="~/LandingTheme/img/favicone.ico">
+    <meta charset="UTF-8">
+    <title>Rifat| Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="~/Theme/LoginTheme/css/style.css">
+
+</head>
+<body>
+
+    <div id="loading" style="display: none;">
+        <img id="loading-image" src="~/Theme/loader.gif" alt="Loading..." />
+    </div>
+    <div class="cont">
+        <div class="demo">
+            <div class="login">
+                <div class="login__check"></div>
+                <div class="login__form">
+                    <div class="login__row">
+                        <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+                            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+                        </svg>
+                        <input id="txtLoginId" type="text" class="login__input name" placeholder="Username" />
+                    </div>
+                    <div class="login__row">
+                        <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+                            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+                        </svg>
+                        <input type="password" id="txtpassword" class="login__input pass" placeholder="Password" />
+                        <br><br>
+                        <input type="checkbox" id="chkRememberMe" class="login__signup">  <span class="rememberme"> Remember Me</span><br>
+                    </div>
+                    <button type="button" id="btnLogin" class="login__submit">Sign in</button>
+                    <h2 id="messageLogin" class="login__signup" style="color: red"></h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="~/Scripts/Login/Login.js"></script>
+
+

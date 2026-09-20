@@ -1,0 +1,319 @@
+﻿@{
+    ViewBag.Title = "Portfolio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>*@
+@*<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>*@
+@*<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>*@
+@*<script src="~/Theme/js/plugin/ckeditor/ckeditor.js"></script>*@
+<script src="~/Theme/js/plugin/ckeditor/4.22.1/standard/ckeditor.js"></script>
+
+<script src="~/Scripts/Cms/Portfolio.js"></script>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+</head>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Forms</li>
+                <li>Smart Form Elements</li>
+            </ol>
+            <!-- end breadcrumb -->
+            <!-- You can also add more buttons to the
+            ribbon for further usability
+
+            Example below:
+
+            <span class="ribbon-button-alignment pull-right">
+                <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+                <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+                <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+                </span> -->
+
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+
+
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+
+
+                <div class="row ">
+
+                    <div class="jarviswidget col-sm-12 col-md-12 col-lg-12" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Home Content </h2>
+
+                        </header>
+                        <div>
+
+                            <button id="btnAddNewWork" class="btn btn-primary pull-right">
+                                Add New Work/Portfolio
+                            </button>
+                        </div>
+                        <!-- widget div-->
+                        <div>
+
+                            <table id="worksTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th data-field="WorkId" data-visible="false"></th>
+                                        <th data-field="TypeId" data-visible="false"></th>
+                                        <th data-field="ImageLink" data-formatter="ShowImage">Image</th>
+                                        <th data-field="Title">Title</th>
+                                        <th data-field="Description">Details</th>
+                                        <th data-formatter="TablePortfolioActions" data-events="actionEventsPort">Action</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+
+                </div>
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    @*style="display: none"*@
+
+<div id="popup" title="APT ERP V 1.0.0">
+        @Html.Partial("~/Views/Cms/_WorkType.cshtml")
+
+</div>
+<div style="display: none" class="jarviswidget col-sm-12 col-md-12 col-lg-12" id="divAddNewWork" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+        <h2>Add new Work/Portfolio</h2>
+
+    </header>
+
+    <!-- widget div-->
+    <div>
+
+        <!-- widget edit box -->
+        <div class="jarviswidget-editbox">
+            <!-- This area used as dropdown edit box -->
+
+        </div>
+        <!-- end widget edit box -->
+        <!-- widget content -->
+        <div class="widget-body no-padding">
+
+            <div id="order-form" class="smart-form" novalidate="novalidate">
+                @*<header>
+                            Work/Portfolio
+                        </header>*@
+
+                <input id="hdnWorkId" type="hidden" value="0">
+
+                <fieldset>
+                    <div class="row">
+                        <section class="col col-4">
+                            <label for="cmbTypeId" class="label">Type Name:</label>
+                            <label class="select">
+                                <select style="width: 100%;" id="cmbTypeId"><option></option></select>
+                            </label>
+                        </section>
+                        <section class="col col-2">
+                            <label for="cmbTypeId" class="label">.</label>
+                            <button id="btnAddNewCatagory" class="btn btn-primary">
+                                Add Catagory
+                            </button>
+                        </section>
+                        <section class="col col-2">
+                            <label for="txtLink" class="label">Sequence</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-building"></i>
+                                <input type="number" id="txtSequence" min="0" max="50" name="txtSequence" placeholder="Sequence">
+                            </label>
+                        </section>
+                       
+                    </div>
+
+                    <div class="row">
+                        <section class="col col-6">
+                            <label for="txtTitle" class="label">Title</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-building"></i>
+                                <input type="text" id="txtTitle" name="txtTitle" placeholder="Title">
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label for="txtLink" class="label">Project Link (Optional)</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-building"></i>
+                                <input type="text" id="txtLink" name="txtLink" placeholder="Project Link (Optional)">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label for="txtTitle" class="label">Role</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-building"></i>
+                                <input type="text" id="txtRole" name="txtRole" placeholder="Role">
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label for="txtLink" class="label">Technologies</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-building"></i>
+                                <input type="text" id="txtTechnologies" name="txtTechnologies" placeholder="Technologies">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-6">
+
+                            <div class="input input-file">
+                                <span class="button"><input id="imgInp" type="file" name="file2" onchange=" this.parentNode.nextSibling.value = this.value ">Browse</span><input type="text" placeholder="Include some files" readonly="">
+                            </div>
+                            <input type="hidden" id="hdnImageLink">
+                            <img id="blah" src="#" alt="image" class="img-responsive" style="width: 300px; height: 200px" />
+                        </section>
+                        <section class="col col-6">
+                            <label for="txtDescription" class="label">Description</label>
+                            <label class="textarea">
+                                <textarea rows="5" id="txtDescription" placeholder="Description"></textarea>
+                            </label>
+                        </section>
+                    </div>
+                </fieldset>
+                <section>
+                    <section>
+                        <label for="txtDescription" class="label">Details</label>
+                        <label class="textarea">
+                            <textarea name="ckeditor" id="txtDetails"></textarea>
+                        </label>
+                    </section>
+                </section>
+               
+                <footer>
+                    <button id="btnSaveWork" class="btn btn-primary">
+                        Save Work
+                    </button>
+                </footer>
+            </div>
+
+        </div>
+        <!-- end widget content -->
+
+    </div>
+    <!-- end widget div -->
+
+</div>
+
+   
+@*</div>*@
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+<div id="myModalDeletePortfolio" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">RCMS</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDeletePortfolio">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</html>

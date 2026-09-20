@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+
+@*<script>
+        $("#secPagesHeaderList").css('background-image', 'url(~/Upload/Image/PortfolioList.jpg)');
+    </script>*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<body>
+
+    <!-- Loader -->
+    <div class="loader-con">
+        <div class="ball ball-1"><span class="main-color-bg"></span></div>
+        <div class="ball ball-2"><span class="main-color-bg"></span></div>
+        <div class="ball ball-3"><span class="main-color-bg"></span></div>
+    </div>
+    <!-- End Loader  -->
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="nav-wrapper effect">
+        <nav class="navbar-custom">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand effect" href="/">
+                        <img src="~/LandingTheme/img/brand-img.png" alt="brand-img">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-navbar">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="main-color"><a href="/#home" class="scroll effect active" data-speed="800">HOME</a></li>
+                        <li class="main-color"><a href="/#about" class="scroll effect" data-speed="1000">ABOUT</a></li>
+                        <li class="main-color"><a href="/#services" class="scroll effect" data-speed="1400">SERVICES</a></li>
+                        <li class="main-color"><a href="/#work" class="scroll effect" data-speed="1400">WORK</a></li>
+                        <li class="main-color"><a href="/#news" class="scroll effect" data-speed="1500">NEWS</a></li>
+                        <li class="main-color"><a href="/#contact" class="scroll effect" data-speed="1600">CONTACT</a></li>
+                    </ul>
+
+                </div><!-- End navbar-collapse -->
+            </div><!-- End container -->
+        </nav>
+    </header>
+    <!-- END MAIN NAVIGATION BAR -->
+    <!-- HEADER -->
+
+    <section id="secPagesHeaderList" class="pages-header" style="background-image: url(/Upload/Image/PortfolioList.jpg)">
+        @*<section id="secPagesHeader" class="pages-header">*@
+
+        <div class=" container">
+            <div class="pages-header-content">
+
+
+                <ul class="pages-header-list">
+                    <li class="main-color"><a href="/" class="effect">Blogs</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- END HEADER -->
+    <!-- Portfolio Details -->
+        @Html.Partial("~/Views/LandingPage/_blogs.cshtml")
+
+</body>
+</html>
+<style>
+    #secPagesHeaderList {
+        background: url("~/Upload/Image/PortfolioList.jpg");
+        background-size: cover; /* For flexibility */
+    }
+</style>
+
