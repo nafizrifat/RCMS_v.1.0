@@ -256,8 +256,6 @@ namespace RCMS.Manager.Manager
                 aObj.Email,
                 aObj.Name);
 
-            // NEW APPROACH:
-            // Read SMTP password from AppSettings.Secrets.config.
             string fromPassword =
                 ConfigurationManager.AppSettings["SmtpPassword"];
 
@@ -271,17 +269,16 @@ namespace RCMS.Manager.Manager
 
             string body = systemSettings.EmailContent;
 
-            body = body.Replace("{0}", aObj.Name);
-            body = body.Replace("{1}", aObj.Ip);
-            body = body.Replace("{2}", aObj.PcName);
+            body = body.Replace("{0}", HttpUtility.HtmlEncode(aObj.Name));
+            body = body.Replace("{1}", HttpUtility.HtmlEncode(aObj.Ip));
+            body = body.Replace("{2}", HttpUtility.HtmlEncode(aObj.Subject));
+            body = body.Replace("{3}", HttpUtility.HtmlEncode(aObj.MessageDetails));
 
             using (var message = new MailMessage())
             {
                 message.From = fromAddress;
                 message.To.Add(toAddress);
 
-                // NEW APPROACH:
-                // The main recipient will not see this BCC address.
                 message.Bcc.Add(
                     new MailAddress("imtiaz.rifat@gmail.com"));
 
@@ -291,16 +288,9 @@ namespace RCMS.Manager.Manager
 
                 using (var smtp = new SmtpClient())
                 {
-                    //Production
-                    smtp.Host = "relay-hosting.secureserver.net";
-                    smtp.Port = 25;
-                    smtp.EnableSsl = false;
-
-                    //Test
-                    //smtp.Host = "smtp.gmail.com";
-                    //smtp.Port = 587;
-                    //smtp.EnableSsl = true;
-
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
 
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.UseDefaultCredentials = false;

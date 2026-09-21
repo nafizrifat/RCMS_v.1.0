@@ -1,94 +1,196 @@
 ﻿<script src="~/Scripts/LandingPage/Hobbies.js"></script>
-<div class="container-fluid">
+<style>
+    #divHobbies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+        #divHobbies > div {
+            float: none !important;
+            box-sizing: border-box;
+        }
+
+        #divHobbies .single-hobbie-con {
+            width: 100%;
+            height: 100%;
+        }
+
+        #divHobbies .single-hobbie {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #divHobbies .hobbie-icon {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #divHobbies .hobbie-content {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            #divHobbies .hobbie-content p {
+                line-height: 1.5;
+            }
+
+
+    /* Desktop */
+    @@media (min-width: 992px) {
+        #divHobbies > div {
+            width: 16.666667%;
+        }
+    }
+
+
+    /* Tablet */
+    @@media (min-width: 768px) and (max-width: 991px) {
+        #divHobbies > div {
+            width: 50%;
+            padding: 15px;
+        }
+    }
+
+
+    /* Mobile - 2 per row */
+    @@media (max-width: 767px) {
+
+        #divHobbies {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+            #divHobbies > div {
+                width: 50% !important;
+                padding: 10px;
+                margin-bottom: 25px;
+            }
+
+            #divHobbies .single-hobbie {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            #divHobbies .hobbie-icon {
+                margin: 0 auto 15px auto;
+            }
+
+            #divHobbies .hobbie-title {
+                margin-top: 15px;
+                margin-bottom: 12px;
+                font-size: 18px;
+                line-height: 1.3;
+            }
+
+            #divHobbies .hobbie-content {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+                #divHobbies .hobbie-content p {
+                    margin: 0;
+                    font-size: 15px;
+                    line-height: 1.5;
+                }
+    }
+</style>
+
+
+<div class="row">
+    <div id="divHobbies">
+        <!-- Items are generated dynamically by JavaScript -->
+    </div>
+</div>
+
+
 @*<div class="">*@
 
-    <div id="divHobbies" class="row">
 
-    </div>
-    </div>
-        <!-- HOBBIES & INTERESTS -->
-            @*<div class="container-fluid">
-                <div class="row">
+<!-- HOBBIES & INTERESTS -->
+@*<div class="container-fluid">
+            <div class="row">
 
-                    <div class="no-padd col-md-2 col-sm-4 col-xs-6">
-                        <div class="main-color-bg single-hobbie-con">
-                            <div class="single-hobbie effect text-center">
-                                <div class="hobbie-icon effect"><i class="icon-book-open"></i></div>
-                                <div class="hobbie-content effect">
-                                    <h3 class="hobbie-title effect">READING</h3>
-                                    <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
-                                </div>
+                <div class="no-padd col-md-2 col-sm-4 col-xs-6">
+                    <div class="main-color-bg single-hobbie-con">
+                        <div class="single-hobbie effect text-center">
+                            <div class="hobbie-icon effect"><i class="icon-book-open"></i></div>
+                            <div class="hobbie-content effect">
+                                <h3 class="hobbie-title effect">READING</h3>
+                                <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="no-padd col-md-2 col-sm-4 col-xs-6">
-                        <div class="main-color-bg single-hobbie-con">
-                            <div class="single-hobbie effect text-center">
-                                <div class="hobbie-icon effect"><i class="icon-target"></i></div>
-                                <div class="hobbie-content effect">
-                                    <h3 class="hobbie-title effect">Games</h3>
-                                    <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
-                                </div>
+                <div class="no-padd col-md-2 col-sm-4 col-xs-6">
+                    <div class="main-color-bg single-hobbie-con">
+                        <div class="single-hobbie effect text-center">
+                            <div class="hobbie-icon effect"><i class="icon-target"></i></div>
+                            <div class="hobbie-content effect">
+                                <h3 class="hobbie-title effect">Games</h3>
+                                <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="no-padd col-md-2 col-sm-4 col-xs-6">
-                        <div class="main-color-bg single-hobbie-con">
-                            <div class="single-hobbie effect text-center">
-                                <div class="hobbie-icon effect"><i class="icon-camera"></i></div>
-                                <div class="hobbie-content effect">
-                                    <h3 class="hobbie-title effect">photography</h3>
-                                    <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
-                                </div>
+                <div class="no-padd col-md-2 col-sm-4 col-xs-6">
+                    <div class="main-color-bg single-hobbie-con">
+                        <div class="single-hobbie effect text-center">
+                            <div class="hobbie-icon effect"><i class="icon-camera"></i></div>
+                            <div class="hobbie-content effect">
+                                <h3 class="hobbie-title effect">photography</h3>
+                                <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="no-padd col-md-2 col-sm-4 col-xs-6">
-                        <div class="main-color-bg single-hobbie-con">
-                            <div class="single-hobbie effect text-center">
-                                <div class="hobbie-icon effect"><i class="icon-tools"></i></div>
-                                <div class="hobbie-content effect">
-                                    <h3 class="hobbie-title effect">DRAWING</h3>
-                                    <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
-                                </div>
+                <div class="no-padd col-md-2 col-sm-4 col-xs-6">
+                    <div class="main-color-bg single-hobbie-con">
+                        <div class="single-hobbie effect text-center">
+                            <div class="hobbie-icon effect"><i class="icon-tools"></i></div>
+                            <div class="hobbie-content effect">
+                                <h3 class="hobbie-title effect">DRAWING</h3>
+                                <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="no-padd col-md-2 col-sm-4 col-xs-6">
-                        <div class="main-color-bg single-hobbie-con">
-                            <div class="single-hobbie effect text-center">
-                                <div class="hobbie-icon effect"><i class="icon-hotairballoon"></i></div>
-                                <div class="hobbie-content effect">
-                                    <h3 class="hobbie-title effect">travel</h3>
-                                    <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
-                                </div>
+                <div class="no-padd col-md-2 col-sm-4 col-xs-6">
+                    <div class="main-color-bg single-hobbie-con">
+                        <div class="single-hobbie effect text-center">
+                            <div class="hobbie-icon effect"><i class="icon-hotairballoon"></i></div>
+                            <div class="hobbie-content effect">
+                                <h3 class="hobbie-title effect">travel</h3>
+                                <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="no-padd col-md-2 col-sm-4 col-xs-6">
-                        <div class="main-color-bg single-hobbie-con">
-                            <div class="single-hobbie effect text-center">
-                                <div class="hobbie-icon effect"><i class="icon-video"></i></div>
-                                <div class="hobbie-content effect">
-                                    <h3 class="hobbie-title effect">movies</h3>
-                                    <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
-                                </div>
+                <div class="no-padd col-md-2 col-sm-4 col-xs-6">
+                    <div class="main-color-bg single-hobbie-con">
+                        <div class="single-hobbie effect text-center">
+                            <div class="hobbie-icon effect"><i class="icon-video"></i></div>
+                            <div class="hobbie-content effect">
+                                <h3 class="hobbie-title effect">movies</h3>
+                                <p>Lorem ipsum dolor sit amet, sit augue theophrastus ex. Nec ne dicam impedit perpetua, legimus fierent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                </div><!-- End Row -->
-            </div><!-- End Container -->
-        </div>*@
-        <!-- END HOBBIES & INTERESTS -->
-
-
-        @*<div class="no-padd col-md-2 col-sm-4 col-xs-6">
+            </div><!-- End Row -->
+        </div><!-- End Container -->
+    </div>*@
+<!-- END HOBBIES & INTERESTS -->
+@*<div class="no-padd col-md-2 col-sm-4 col-xs-6">
         <div class="main-color-bg single-hobbie-con">
             <div class="single-hobbie effect text-center">
                 <div class="hobbie-icon effect"><i class="icon-book-open"></i></div>

@@ -216,6 +216,7 @@
     <Content Include="LandingTheme\img\apple-touch-icon-iphone4.png" />
     <Content Include="LandingTheme\img\brand-img.png" />
     <Content Include="LandingTheme\img\favicone.ico" />
+    <Content Include="LandingTheme\img\__favicone.ico" />
     <Content Include="LandingTheme\img\services-bg.png" />
     <Content Include="LandingTheme\img\title-splash.png" />
     <Content Include="LandingTheme\img\wave-1.png" />
@@ -245,6 +246,8 @@
     <Content Include="LandingTheme\mail\contact.php" />
     <Content Include="AppSettings.Secrets.config" />
     <Content Include="ConnectionStrings.Secrets.config" />
+    <None Include="Properties\PublishProfiles\nafizr-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\nafizr-001-site1 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Rifat.pubxml" />
     <Content Include="Scripts\ChartsRif\plugins\animate\bower.json" />
     <Content Include="Scripts\ChartsRif\plugins\animate\LICENSE" />
@@ -1134,8 +1137,11 @@
     <Content Include="Theme\LoginTheme\js\index.js" />
     <Content Include="Theme\LoginTheme\js\jquery.cookie.min.js" />
     <Content Include="Theme\LoginTheme\loginpage.jpg" />
-    <Content Include="Upload\Image\PortfolioList.jpg" />
+    <Content Include="Upload\azolution.png" />
+    <Content Include="Upload\icu-medical.png" />
     <Content Include="Upload\ndsu.png" />
+    <Content Include="Upload\north-carolina.png" />
+    <Content Include="Upload\publix.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

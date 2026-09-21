@@ -47,7 +47,11 @@ namespace RCMS.Manager.Manager
         {
             try
             {
-                var data = _aRepository.SelectAll();
+                var data = _aRepository
+                    .SelectAll()
+                    .Where(x => x.IsPublished == true)
+                    .OrderBy(x => x.Sequence)
+                    .ToList();
                 return _aModel.Respons(data);
             }
             catch (Exception ex)

@@ -154,3 +154,11 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/RCMS.WEB/AppSettings.Secrets.config
+/RCMS.WEB/ConnectionStrings.Secrets.config
+/.vs/RCMS_v.1.0/CopilotIndices/17.14.1700.50054
+/.vs/RCMS_v.1.0/FileContentIndex
+/.vs/RCMS_v.1.0/v17/TestStore/0/000.testlog
+/.vs/RCMS_v.1.0/v17/DocumentLayout.backup.json
+/.vs/RCMS_v.1.0/v17/DocumentLayout.json
+/.vs/RCMS_v.1.0/v17/fileList.bin
